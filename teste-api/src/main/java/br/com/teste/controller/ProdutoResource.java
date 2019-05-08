@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.teste.model.beans.Produto;
@@ -39,6 +41,12 @@ public class ProdutoResource {
 		return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
 	}
 	
+	@GetMapping
+	public ResponseEntity<List<Produto>> listByDescricao(@RequestParam("descricao") String descricao) {
+		List<Produto> produtos = this.produtoService.listByDescricao(descricao);
+		return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Produto> save(@Valid @RequestBody Produto produto) {
 		Produto produtoNew = this.produtoService.save(produto);
@@ -52,9 +60,11 @@ public class ProdutoResource {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> delete(@PathVariable Integer id) {
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable Integer id) {
 		produtoService.delete(id);
-		return new ResponseEntity(HttpStatus.ACCEPTED);
 	}
-
+	
+		
+ 
 }

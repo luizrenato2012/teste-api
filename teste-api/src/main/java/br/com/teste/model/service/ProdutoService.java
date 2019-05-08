@@ -29,5 +29,9 @@ public class ProdutoService {
 	public List<Produto> findAll() {
 		return this.repository.findAll();
 	}
+	
+	public List<Produto> listByDescricao(String descricao) {
+		return this.repository.findByDescricaoContainingIgnoreCase(descricao);
+	}
 
 }
