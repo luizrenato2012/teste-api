@@ -1,6 +1,7 @@
 package br.com.teste.model.beans;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(schema="estoque", name="produto")
-@SequenceGenerator(name="SEQ_ID_PRODUTO", sequenceName="vendas.seq_produto", allocationSize=1)
+@Table(schema="venda", name="produto")
+@SequenceGenerator(name="SEQ_ID_PRODUTO", sequenceName="venda.seq_id_produto", allocationSize=1)
 public class Produto implements Serializable {
 	
 	private static final long serialVersionUID = -6434902318298909952L;
@@ -21,28 +24,25 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_ID_PRODUTO")
 	private Integer id;
 	
+	@NotNull
+	@Size(min=5, max=50)
 	@Column
 	private String descricao;
 	
+	@NotNull
 	@Column
-	private double preco;
+	private BigDecimal preco;
 	
 	public Produto() {
 		super();
 	}
 	
-	public Produto(String descricao, double preco) {
-		super();
-		this.descricao = descricao;
-		this.preco = preco;
+	
+	public BigDecimal getPreco() {
+		return preco;
 	}
 
-
-
-	public Produto(Integer id, String descricao, double preco) {
-		super();
-		this.id = id;
-		this.descricao = descricao;
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
 
@@ -62,13 +62,6 @@ public class Produto implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
 
 	@Override
 	public int hashCode() {

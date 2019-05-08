@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.teste.model.beans.Cliente;
-import br.com.teste.model.beans.ObjetoNaoEncontradoException;
 import br.com.teste.model.repository.ClienteRepository;
 
 @Service
@@ -28,27 +27,13 @@ public class ClienteService {
 	}
 
 	public Cliente save(Cliente cliente) {
-		if (cliente.getId()!=null) {
-			this.validaCliente(cliente.getId());
-		}
 		return clienteRepository.save(cliente);
 	}
 	
 	public void delete(Integer id) {
-		if (id==null) {
-			throw new ObjetoNaoEncontradoException("Id do objeto invalido");
-		}
-		this.validaCliente(id);
-		Cliente cliente = this.clienteRepository.findOne(id);
-		this.clienteRepository.delete(cliente);
+		this.clienteRepository.delete(id);
 	}
 
-	private void validaCliente(Integer id) {
-		Cliente cliente = this.clienteRepository.findOne(id);
-		if (cliente==null) {
-			throw new ObjetoNaoEncontradoException("Cliente id ["+ id + "] nao encontrado");
-		}
-	}
 
 	
 	

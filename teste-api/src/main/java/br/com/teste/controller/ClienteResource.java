@@ -17,7 +17,7 @@ import br.com.teste.model.beans.Cliente;
 import br.com.teste.model.service.ClienteService;
 
 @RestController
-@RequestMapping("/api/clientes")
+@RequestMapping("/api/cliente")
 public class ClienteResource {
 	
 	@Autowired

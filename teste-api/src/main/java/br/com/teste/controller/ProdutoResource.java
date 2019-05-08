@@ -2,12 +2,15 @@ package br.com.teste.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +20,7 @@ import br.com.teste.model.beans.Produto;
 import br.com.teste.model.service.ProdutoService;
 
 @RestController
-@RequestMapping("/api/produtos")
+@RequestMapping("/api/produto")
 public class ProdutoResource {
 	
 	@Autowired
@@ -36,18 +39,22 @@ public class ProdutoResource {
 		return new ResponseEntity<List<Produto>>(produtos, HttpStatus.OK);
 	}
 	
-	@PutMapping
-	public ResponseEntity<Produto> save(@RequestBody Produto produto) {
+	@PostMapping
+	public ResponseEntity<Produto> save(@Valid @RequestBody Produto produto) {
+		Produto produtoNew = this.produtoService.save(produto);
+		return new ResponseEntity(produtoNew , HttpStatus.CREATED );
+	}
+	
+	@PutMapping("/{codigo}")
+	public ResponseEntity<Produto> update(@PathVariable Long codigo, @Valid @RequestBody Produto produto) {
 		Produto produtoNew = this.produtoService.save(produto);
 		return new ResponseEntity(produtoNew , HttpStatus.CREATED );
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity delete(@PathVariable Integer id) {
+	public ResponseEntity<Object> delete(@PathVariable Integer id) {
 		produtoService.delete(id);
 		return new ResponseEntity(HttpStatus.ACCEPTED);
 	}
-	
-	
 
 }

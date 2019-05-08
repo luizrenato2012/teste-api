@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -32,6 +34,10 @@ public class Cliente implements Serializable {
 	
 	@Column
 	private String telefone;
+	
+	@OneToOne
+	@JoinColumn(name="id_cliente")
+	private Endereco endereco;
 	
 	public Cliente(Integer id, String nome, String cpf) {
 		super();
@@ -89,6 +95,14 @@ public class Cliente implements Serializable {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override
