@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(schema="venda", name="cliente")
 @SequenceGenerator(name="SEQ_ID_CLIENTE", sequenceName="venda.seq_id_cliente",allocationSize=1)
-public class Cliente implements Serializable, EstadoBean{
+public class Cliente implements Serializable {
 	
 	private static final long serialVersionUID = -3912475183732151620L;
 
@@ -59,7 +59,6 @@ public class Cliente implements Serializable, EstadoBean{
 		this.telefone = telefone;
 	}
 
-	@Override
 	public Integer getId() {
 		return id;
 	}

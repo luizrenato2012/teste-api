@@ -1,6 +1,6 @@
 package br.com.teste.model.beans;
 
-public enum SituacaoCompra {
+public enum SituacaoVenda {
 	
 	ABERTA,FECHADA,PAGA,PENDENTE
 

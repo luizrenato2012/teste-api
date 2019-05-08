@@ -39,7 +39,7 @@ public class ProdutoResource {
 	@PutMapping
 	public ResponseEntity<Produto> save(@RequestBody Produto produto) {
 		Produto produtoNew = this.produtoService.save(produto);
-		return new ResponseEntity(produtoNew , produto.isInclusao() ? HttpStatus.CREATED : HttpStatus.ACCEPTED);
+		return new ResponseEntity(produtoNew , HttpStatus.CREATED );
 	}
 	
 	@DeleteMapping("/{id}")

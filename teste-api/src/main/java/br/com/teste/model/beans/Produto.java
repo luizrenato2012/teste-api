@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(schema="estoque", name="produto")
 @SequenceGenerator(name="SEQ_ID_PRODUTO", sequenceName="vendas.seq_produto", allocationSize=1)
-public class Produto implements Serializable, EstadoBean {
+public class Produto implements Serializable {
 	
 	private static final long serialVersionUID = -6434902318298909952L;
 
@@ -46,7 +46,6 @@ public class Produto implements Serializable, EstadoBean {
 		this.preco = preco;
 	}
 
-	@Override
 	public Integer getId() {
 		return id;
 	}

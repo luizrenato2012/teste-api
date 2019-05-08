@@ -2,7 +2,7 @@ package br.com.teste.model.beans;
 
 import java.io.Serializable;
 
-public class ItemCompra implements Serializable {
+public class ItemVenda implements Serializable {
 	
 	private static final long serialVersionUID = 4795797482322027561L;
 
@@ -18,7 +18,7 @@ public class ItemCompra implements Serializable {
 	
 	private double valorTotal;
 	
-	private Compra compra;
+	private Venda compra;
 
 	public Integer getId() {
 		return id;
@@ -68,11 +68,11 @@ public class ItemCompra implements Serializable {
 		this.sequencial = sequencial;
 	}
 
-	public Compra getCompra() {
+	public Venda getCompra() {
 		return compra;
 	}
 
-	public void setCompra(Compra compra) {
+	public void setCompra(Venda compra) {
 		this.compra = compra;
 	}
 	

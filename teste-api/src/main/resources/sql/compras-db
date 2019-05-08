@@ -123,7 +123,7 @@ CREATE TABLE venda.cliente (
 );
 
 
-ALTER TABLE venda.cliente OWNER TO admin;
+ALTER TABLE venda.cliente OWNER TO teste;
 
 --
 -- TOC entry 200 (class 1259 OID 16539)

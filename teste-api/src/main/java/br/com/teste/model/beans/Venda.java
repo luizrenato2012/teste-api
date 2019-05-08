@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Compra implements Serializable {
+public class Venda implements Serializable {
 	
 	private static final long serialVersionUID = -2285152440253541748L;
 
@@ -14,9 +14,9 @@ public class Compra implements Serializable {
 	
 	private Cliente cliente;
 	
-	private List<ItemCompra> itens;
+	private List<ItemVenda> itens;
 	
-	private SituacaoCompra situacao;
+	private SituacaoVenda situacao;
 	
 	private double valorTotal;
 
@@ -44,11 +44,11 @@ public class Compra implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public List<ItemCompra> getItens() {
+	public List<ItemVenda> getItens() {
 		return itens;
 	}
 
-	public void setItens(List<ItemCompra> itens) {
+	public void setItens(List<ItemVenda> itens) {
 		this.itens = itens;
 	}
 
@@ -60,11 +60,11 @@ public class Compra implements Serializable {
 		this.valorTotal = valorTotal;
 	}
 
-	public SituacaoCompra getSituacao() {
+	public SituacaoVenda getSituacao() {
 		return situacao;
 	}
 
-	public void setSituacao(SituacaoCompra situacao) {
+	public void setSituacao(SituacaoVenda situacao) {
 		this.situacao = situacao;
 	}
 	
