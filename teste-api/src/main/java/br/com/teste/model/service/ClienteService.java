@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.teste.model.beans.Cliente;
+import br.com.teste.model.beans.Endereco;
 import br.com.teste.model.repository.ClienteRepository;
 
 @Service
@@ -27,6 +28,8 @@ public class ClienteService {
 	}
 
 	public Cliente save(Cliente cliente) {
+		Endereco endereco = cliente.getEndereco();
+		endereco.setCliente(cliente);
 		return clienteRepository.save(cliente);
 	}
 	

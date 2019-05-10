@@ -2,12 +2,15 @@ package br.com.teste.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,18 +39,23 @@ public class ClienteResource {
 		return new ResponseEntity(cliente, cliente!=null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
 	}
 	
-	@GetMapping("/nome/{nome}")
+	@GetMapping("/nome/{nome}") /** vai ser substituido por metodo com filtro */
 	public ResponseEntity<List<Cliente>> findByNome(@PathVariable String nome) {
 		List<Cliente> clientes = this.clienteService.findByNome(nome);
 		boolean possuiClientes = clientes!=null && clientes.size()>0;
 		return new ResponseEntity(clientes , possuiClientes ? HttpStatus.OK : HttpStatus.NOT_FOUND);
 	}
 	
-	@PutMapping
-	public ResponseEntity<Cliente> save(@RequestBody Cliente cliente) {
-		Cliente clienteNew = this.clienteService.save(cliente);
-		boolean isInclusao = cliente.getId()==null || cliente.getId()==0;
-		return new ResponseEntity( clienteNew, isInclusao ? HttpStatus.CREATED : HttpStatus.ACCEPTED);
+	@PutMapping("/{codigo}")
+	public ResponseEntity<Cliente> update(@PathVariable Long codigo, @RequestBody Cliente cliente) {
+		Cliente clienteSalvo = this.clienteService.save(cliente);
+		return ResponseEntity.ok(clienteSalvo);
+	}
+	
+	@PostMapping
+	public ResponseEntity<Cliente> save(@Valid @RequestBody Cliente cliente) {
+		Cliente clienteSalvo = this.clienteService.save(cliente);
+		return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
 	}
 	
 	@DeleteMapping("/{id}")
