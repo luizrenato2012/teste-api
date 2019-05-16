@@ -1,13 +1,13 @@
-package br.com.teste.model.service;
+package br.com.teste.api.model.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.teste.model.beans.Cliente;
-import br.com.teste.model.beans.Endereco;
-import br.com.teste.model.repository.ClienteRepository;
+import br.com.teste.api.model.beans.Cliente;
+import br.com.teste.api.model.beans.Endereco;
+import br.com.teste.api.model.repository.ClienteRepository;
 
 @Service
 public class ClienteService {

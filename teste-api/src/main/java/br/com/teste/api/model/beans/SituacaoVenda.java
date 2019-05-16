@@ -1,4 +1,4 @@
-package br.com.teste.model.beans;
+package br.com.teste.api.model.beans;
 
 public enum SituacaoVenda {
 	

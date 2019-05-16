@@ -1,4 +1,4 @@
-package br.com.teste.model.repository.filtro;
+package br.com.teste.api.model.repository.filtro;
 
 public class FiltroProduto {
 	

@@ -1,12 +1,12 @@
-package br.com.teste.model.service;
+package br.com.teste.api.model.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.teste.model.beans.Produto;
-import br.com.teste.model.repository.ProdutoRepository;
+import br.com.teste.api.model.beans.Produto;
+import br.com.teste.api.model.repository.ProdutoRepository;
 
 @Service
 public class ProdutoService {

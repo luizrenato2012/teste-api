@@ -1,4 +1,4 @@
-package br.com.teste.model.repository.query;
+package br.com.teste.api.model.repository.query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +18,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import br.com.teste.model.beans.Produto;
-import br.com.teste.model.repository.filtro.FiltroProduto;
+import br.com.teste.api.model.beans.Produto;
+import br.com.teste.api.model.repository.filtro.FiltroProduto;
 
 @Repository
 public class ProdutoRepositoryImpl implements ProdutoRepositoryQuery {

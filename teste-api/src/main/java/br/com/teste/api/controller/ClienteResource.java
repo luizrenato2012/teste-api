@@ -1,4 +1,4 @@
-package br.com.teste.controller;
+package br.com.teste.api.controller;
 
 import java.util.List;
 
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.teste.model.beans.Cliente;
-import br.com.teste.model.service.ClienteService;
+import br.com.teste.api.model.beans.Cliente;
+import br.com.teste.api.model.service.ClienteService;
 
 @RestController
 @RequestMapping("/api/cliente")

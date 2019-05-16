@@ -1,4 +1,4 @@
-package br.com.teste.controller;
+package br.com.teste.api.controller;
 
 import java.util.List;
 
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.teste.model.beans.Produto;
-import br.com.teste.model.repository.ProdutoRepository;
-import br.com.teste.model.repository.filtro.FiltroProduto;
-import br.com.teste.model.service.ProdutoService;
+import br.com.teste.api.model.beans.Produto;
+import br.com.teste.api.model.repository.ProdutoRepository;
+import br.com.teste.api.model.repository.filtro.FiltroProduto;
+import br.com.teste.api.model.service.ProdutoService;
 
 @RestController
 @RequestMapping("/api/produto")

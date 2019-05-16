@@ -1,4 +1,4 @@
-package br.com.teste.model.repository;
+package br.com.teste.api.model.repository;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import br.com.teste.model.beans.Produto;
-import br.com.teste.model.repository.query.ProdutoRepositoryQuery;
+import br.com.teste.api.model.beans.Produto;
+import br.com.teste.api.model.repository.query.ProdutoRepositoryQuery;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Integer>, ProdutoRepositoryQuery{

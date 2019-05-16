@@ -1,4 +1,4 @@
-package br.com.teste.config;
+package br.com.teste.api.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
