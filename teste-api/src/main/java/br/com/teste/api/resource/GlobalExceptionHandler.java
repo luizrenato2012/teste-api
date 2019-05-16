@@ -1,4 +1,4 @@
-package br.com.teste.api.controller;
+package br.com.teste.api.resource;
 
 import java.util.ArrayList;
 import java.util.List;
