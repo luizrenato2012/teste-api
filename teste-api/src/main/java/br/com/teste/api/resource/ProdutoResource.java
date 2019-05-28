@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.hibernate.annotations.MetaValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -36,6 +37,7 @@ public class ProdutoResource {
 	private ProdutoRepository produtoRepository;
 	
 	@GetMapping("/{id}")
+	@M
 	public ResponseEntity<Produto> load (@PathVariable  Integer id) {
 		Produto p = this.produtoService.findOne(id);
 		HttpStatus status = p!=null ? HttpStatus.OK : HttpStatus.NOT_FOUND;
