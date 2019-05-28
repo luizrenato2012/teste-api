@@ -21,14 +21,20 @@ public class AuthorizarionServer extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		final int AcCESS_TOKEN_VALIDADE = 20;
+		final int ACCESS_TOKEN_VALIDADE = 60*10;
 		final int REFRESH_TOKEN_VALIDADE = 60 * 60 * 24;
 		clients.inMemory()
 			.withClient("spaclient").secret("@angular)123")
-			.scopes("read","write")
-			.authorizedGrantTypes("password","refresh_token")
-			.accessTokenValiditySeconds(AcCESS_TOKEN_VALIDADE)
-			.refreshTokenValiditySeconds(REFRESH_TOKEN_VALIDADE);
+				.scopes("read","write")
+				.authorizedGrantTypes("password","refresh_token")
+				.accessTokenValiditySeconds(ACCESS_TOKEN_VALIDADE)
+				.refreshTokenValiditySeconds(REFRESH_TOKEN_VALIDADE).
+				and().
+			withClient("mobile").secret("m0b1ll4")
+				.scopes("read")
+				.authorizedGrantTypes("password", "refresh_token")
+				.accessTokenValiditySeconds(ACCESS_TOKEN_VALIDADE)
+				.refreshTokenValiditySeconds(REFRESH_TOKEN_VALIDADE);
 	}
 
 	@Override
