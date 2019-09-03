@@ -1,19 +1,20 @@
 package br.com.teste.api.model.beans;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 
 @Entity
@@ -28,46 +29,20 @@ public class Cliente implements Serializable {
 	private Integer id;
 	
 	@NotNull
-	@Size(min=3, max=50)
-	@Column
-	private String nome;
+	@OneToOne
+	@JoinColumn(name="id_pessoa")
+	private Pessoa pessoa;
+	
+	@ManyToOne
+	@JoinColumn(name="id_situacao_cliente")
+	private SituacaoCliente situacao;
+	
+	@Column(name="data_cadastro")
+	private LocalDate dataCadastro;
 	
 	@Column
-	@NotNull
-	private String cpf;
-	
-	@Column
-	private String telefone;
-	
-	@Valid
-	@OneToOne(mappedBy="cliente", cascade=CascadeType.ALL)
-	private Endereco endereco;
-	
-	public Cliente(Integer id, String nome, String cpf) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.cpf = cpf;
-	}
-
-	public Cliente() {
-		super();
-	}
-
-	public Cliente(String nome, String cpf, String telefone) {
-		super();
-		this.nome = nome;
-		this.cpf = cpf;
-		this.telefone = telefone;
-	}
-	
-	public Cliente(Integer id, String nome, String cpf, String telefone) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.telefone = telefone;
-	}
+	@Lob
+	private String observacao;
 
 	public Integer getId() {
 		return id;
@@ -77,61 +52,37 @@ public class Cliente implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public SituacaoCliente getSituacao() {
+		return situacao;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setSituacao(SituacaoCliente situacao) {
+		this.situacao = situacao;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 	
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cliente other = (Cliente) obj;
-		if (cpf == null) {
-			if (other.cpf != null)
-				return false;
-		} else if (!cpf.equals(other.cpf))
-			return false;
-		return true;
-	}
 
 }

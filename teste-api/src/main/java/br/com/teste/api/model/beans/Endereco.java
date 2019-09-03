@@ -27,23 +27,21 @@ public class Endereco {
 	
 	@NotNull
 	@Size(min=3, max=50)
+	@Column
 	private String logradouro;
 	
 	@NotNull
 	@Size(min=3, max=30)
+	@Column
 	private String bairro;
 	
+	@Column
 	private String cidade;
 	
 	@Column
 	@Enumerated(EnumType.STRING)
 	private UF uf;
 	
-	@JsonIgnore
-	@OneToOne
-	@JoinColumn(name="id_cliente", referencedColumnName="id")
-	private Cliente cliente;
-
 	public Long getId() {
 		return id;
 	}
@@ -84,12 +82,12 @@ public class Endereco {
 		this.uf = uf;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+//	public Cliente getCliente() {
+//		return cliente;
+//	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+//	public void setCliente(Cliente cliente) {
+//		this.cliente = cliente;
+//	}
 
 }

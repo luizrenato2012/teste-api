@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.teste.api.model.beans.Cliente;
@@ -62,6 +63,12 @@ public class ClienteResource {
 	public ResponseEntity delete(@PathVariable Integer id) {
 		this.clienteService.delete(id);
 		return new ResponseEntity(HttpStatus.ACCEPTED);
+	}
+	
+	@GetMapping("/teste")
+	@ResponseStatus(HttpStatus.OK)
+	public void teste() {
+		this.clienteService.executaTeste();
 	}
 
 }

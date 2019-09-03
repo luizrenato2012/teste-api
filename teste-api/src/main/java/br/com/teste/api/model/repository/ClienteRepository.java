@@ -11,7 +11,7 @@ import br.com.teste.api.model.beans.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
 	
-	@Query("select c from Cliente c where c.nome like %?1%")
+	@Query("select c from Cliente c join fetch c.pessoa p where p.nome like %?1%")
 	public List<Cliente> findByNome(String nome);
 
 }
