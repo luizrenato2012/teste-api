@@ -41,7 +41,6 @@ public class Cliente implements Serializable {
 	private LocalDate dataCadastro;
 	
 	@Column
-	@Lob
 	private String observacao;
 
 	public Integer getId() {

@@ -20,7 +20,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -60,6 +60,7 @@ public class Pessoa implements Serializable {
 	@JoinColumn(name="id_telefone_2")
 	private Telefone telefone2;
 	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@Valid
 	@OneToOne(fetch=FetchType.LAZY, cascade= {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE} )
 	@JoinColumn(name="id_endereco")

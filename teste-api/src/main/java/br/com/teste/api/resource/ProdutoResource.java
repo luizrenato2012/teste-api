@@ -24,7 +24,7 @@ import br.com.teste.api.model.repository.filtro.FiltroProduto;
 import br.com.teste.api.model.service.ProdutoService;
 
 @RestController
-@RequestMapping("/api/produto")
+@RequestMapping("/api/produtos")
 public class ProdutoResource {
 	
 	@Autowired
